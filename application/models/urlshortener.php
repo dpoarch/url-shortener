@@ -35,7 +35,13 @@ class Urlshortener extends CI_Model {
                 $this->clicks = 0;
                 $this->datecreated    = date("Y-m-d H:i:s"); 
 
+
+
                 $this->db->insert('urls', $this);
+                $insert_id = $this->db->insert_id();
+                $query = $this->db->query("select * from urls where id = $insert_id ");
+                $data = $query->row();
+                return $data;
         }
 
         public function fetch($shortcode){

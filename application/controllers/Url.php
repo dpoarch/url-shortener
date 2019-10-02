@@ -7,7 +7,11 @@ class Url extends CI_Controller {
 	{
         $this->load->model('urlshortener');
         
-        $this->urlshortener->insert_url();
+        $data = $this->urlshortener->insert_url();
+
+
+        header('Content-Type: application/json');
+        echo json_encode( $data );
     }
     
     public function load($shortcode){
@@ -19,9 +23,9 @@ class Url extends CI_Controller {
         $this->urlshortener->update_clicks($shortcode);
 
         print_r($data->url);
-
-
     }
+
+
 }
 
 
