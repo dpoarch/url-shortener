@@ -8,7 +8,18 @@ class Url extends CI_Controller {
         $this->load->model('urlshortener');
         
         $this->urlshortener->insert_url();
-	}
+    }
+    
+    public function load($shortcode){
+
+        $this->load->model('urlshortener');
+
+        $shortcode;
+        
+        $data = $this->urlshortener->fetch($shortcode);
+
+
+    }
 }
 
 
