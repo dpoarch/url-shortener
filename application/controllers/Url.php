@@ -14,9 +14,11 @@ class Url extends CI_Controller {
 
         $this->load->model('urlshortener');
 
-        $shortcode;
         
         $data = $this->urlshortener->fetch($shortcode);
+        $this->urlshortener->update_clicks($shortcode);
+
+        print_r($data->url);
 
 
     }

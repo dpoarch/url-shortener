@@ -38,13 +38,20 @@ class Urlshortener extends CI_Model {
                 $this->db->insert('urls', $this);
         }
 
-        public function update_clicks()
-        {
-                $this->title    = $_POST['title'];
-                $this->content  = $_POST['content'];
-                $this->date     = time();
+        public function fetch($shortcode){
+              
+                $query = $this->db->query("select * from urls where shorturl = '$shortcode' ");
+                $row = $query->row();
 
-                $this->db->update('urls', $this, array('clicks' => $_POST['id']));
+                return $row;
+        }
+
+        public function update_clicks($shortcode)
+        {
+                $query = $this->db->query("update urls set clicks = clicks + 1 where shorturl = '$shortcode' ");
+                print_r($query);
+
+                return $query;
         }
 
 }
