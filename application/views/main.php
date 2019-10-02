@@ -54,18 +54,12 @@
                 <thead>
                     <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">URL</th>
-                    <th scope="col">Date</th>
+                    <th scope="col">Short URL</th>
                     <th scope="col">Clicks</th>
+                    <th scope="col">Date</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td scope="row">1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
+                <tbody id="grd_data">
                 </tbody>
                 </table>
             </div>
@@ -84,34 +78,50 @@
         $(document).on('click', '#btn_submit', function(){
 
             send_data();
+
         });
 
         function send_data(){
 
             $.ajax({
-  type: 'POST',
-  url: '/index.php/url/create',
-  data: {url: 'aaaaa'},
-  dataType: 'json',
-  success: function(data){console.log(data)}
-});
-
-/*
-            $.ajax({
-                        type      : 'POST',
-                        url       : '/index.php/url/create',
-                        data      :  {url : $('#txt_url').val() },
-                        dataType  : 'json',
-                        success   : function(data) {
-                                        console.log(data);
-                                    }
+                    type: 'POST',
+                    url: '/index.php/url/create',
+                    data: {url: 'aaaaa'},
+                    dataType: 'json',
+                    success: function(data){
+                                 console.log(data);
+                                 load_data();
+                             }
+                            
                     });
-*/
-
         }
 
         function load_data(){
+            $.ajax({
+                    type: 'GET',
+                    url: '/index.php/url/analytics',
+                    dataType: 'json',
+                    success: function(data){
 
+                         console.log(data);
+                         let j = data;
+                         
+                         let html = '';
+                         for(let i = 0; i <= data.length -1; i++)
+                         {
+
+                            html += '<tr>';
+                            html += '    <td scope="row">'+ data[i].id +'</td>';
+                            html += '    <td>'+ data[i].shorturl +'</td>';
+                            html += '    <td>'+ data[i].clicks +'</td>';
+                            html += '    <td>'+ data[i].datecreated +'</td>';
+                            html += '</tr>';
+
+                         }
+
+                         $('#grd_data').html(html);
+                        }   
+                    });
         }
 
     </script>
