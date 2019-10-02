@@ -52,6 +52,14 @@ class Urlshortener extends CI_Model {
                 return $row;
         }
 
+        public function fetch_all(){
+              
+                $query = $this->db->query("select * from urls  where 1=1 order by clicks desc");
+                $rows = $query->result();
+
+                return $rows;
+        }
+
         public function update_clicks($shortcode)
         {
                 $query = $this->db->query("update urls set clicks = clicks + 1 where shorturl = '$shortcode' ");

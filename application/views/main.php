@@ -35,6 +35,10 @@
 
     <div class="container-fluid">
         <div class="row">
+        title
+        </div>
+
+        <div class="row">
             <div class="col-sm">
                 <form>
                     <div class="form-group">

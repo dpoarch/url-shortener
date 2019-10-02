@@ -25,6 +25,15 @@ class Url extends CI_Controller {
         print_r($data->url);
     }
 
+    public function analytics(){
+        $this->load->model('urlshortener');
+        $data = $this->urlshortener->fetch_all();
+
+        header('Content-Type: application/json');
+        echo json_encode( $data );
+    }
+
+
 
 }
 
