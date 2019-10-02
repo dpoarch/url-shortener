@@ -14,7 +14,7 @@
 
 
   <header>
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <a class="navbar-brand" href="#">URL Shortener</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -33,7 +33,23 @@
     </header>
 
 
-
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm">
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Enter URL</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        <small id="emailHelp" class="form-text text-muted">Enter the URL you want to shrink</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <div class="col-sm">
+            Analytics here
+            </div>
+        </div>
+    </div>
 
 
 
