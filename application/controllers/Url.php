@@ -22,7 +22,10 @@ class Url extends CI_Controller {
         $data = $this->urlshortener->fetch($shortcode);
         $this->urlshortener->update_clicks($shortcode);
 
-        print_r($data->url);
+        $this->load->helper('url');
+        header("Location: $data->url"); 
+        exit();
+        
     }
 
     public function analytics(){

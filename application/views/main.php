@@ -35,47 +35,54 @@
 
     <div class="container-fluid">
         <div class="row">
-        title
+            <div style="display: block; height: 50px; position: relative;"></div>
         </div>
 
         <div class="row">
             <div class="col-sm">
-                <form>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Enter URL</label>
-                        <input type="text" class="form-control" id="txt_url" aria-describedby="URL" placeholder="Enter URL">
-                        <small id="emailHelp" class="form-text text-muted">Enter the URL you want to shrink</small>
-                    </div>
-                    <button type="button" id="btn_submit" class="btn btn-primary">Generate Short URL</button>
-                </form>
 
-                <div class="alert alert-success" role="alert">
-                    Successfully Created a new Short URL for www.google.com
-                </div>
 
                 <div class="card">
                     <div class="card-header">
-                        Details
+                        Generate New Short URL
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Short URL</h5>
-                        <p class="card-text">dsfasfdadsf</p>
+
+                    <div id="msg_success" class="alert alert-success" role="alert" style="display: none;">
+                        Successfully Created a new Short URL for www.google.com
+                    </div>
+
+                        <form id="frm_urlcreate">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Enter URL</label>
+                                <input type="text" class="form-control" id="txt_url" aria-describedby="URL" placeholder="Enter URL">
+                                <small id="emailHelp" class="form-text text-muted">Enter the URL you want to shrink</small>
+                            </div>
+                            <button type="button" id="btn_submit" class="btn btn-primary">Generate Short URL</button>
+                        </form>
                     </div>
                 </div>
             </div>
             <div class="col-sm">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Short URL</th>
-                    <th scope="col">Clicks</th>
-                    <th scope="col">Date</th>
-                    </tr>
-                </thead>
-                <tbody id="grd_data">
-                </tbody>
-                </table>
+                    <div class="card">
+                            <div class="card-header">
+                                Analytics
+                            </div>
+                            <div class="card-body">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Short URL</th>
+                                    <th scope="col">Clicks</th>
+                                    <th scope="col">Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="grd_data">
+                                </tbody>
+                            </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -105,9 +112,29 @@
                     success: function(data){
                                  console.log(data);
                                  load_data();
+                                 generate_message(data);
+                                 $('#frm_urlcreate').hide();
                              }
                             
                     });
+        }
+
+        function generate_message(data){
+            let html = '';
+
+            html += 'Successfully Created a new Short URL for ' + data.url;
+            html += '<br />'
+            html += '<br />'
+            html += '<br />'
+            html += '<strong>URL : </strong>' + data.url;
+            html += '<br />'
+            html += '<strong>Short URL : </strong>' + `<a href="http://localhost/index.php/url/load/${data.shorturl}">http://localhost/index.php/url/load/` + data.shorturl + '</a>';
+            html += '<br />'
+            html += '<br />'
+
+            $('#msg_success').html(html);
+            $('#msg_success').show();
+
         }
 
         function load_data(){
