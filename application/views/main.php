@@ -43,11 +43,25 @@
                 <form>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Enter URL</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        <input type="text" class="form-control" id="txt_url" aria-describedby="URL" placeholder="Enter URL">
                         <small id="emailHelp" class="form-text text-muted">Enter the URL you want to shrink</small>
                     </div>
                     <button type="button" id="btn_submit" class="btn btn-primary">Generate Short URL</button>
                 </form>
+
+                <div class="alert alert-success" role="alert">
+                    Successfully Created a new Short URL for www.google.com
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        Details
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Short URL</h5>
+                        <p class="card-text">dsfasfdadsf</p>
+                    </div>
+                </div>
             </div>
             <div class="col-sm">
             <table class="table table-bordered">
@@ -86,7 +100,7 @@
             $.ajax({
                     type: 'POST',
                     url: '/index.php/url/create',
-                    data: {url: 'aaaaa'},
+                    data: {url: $('#txt_url').val()},
                     dataType: 'json',
                     success: function(data){
                                  console.log(data);
