@@ -46,7 +46,24 @@
                 </form>
             </div>
             <div class="col-sm">
-            Analytics here
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">URL</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Clicks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td scope="row">1</td>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                </tbody>
+                </table>
             </div>
         </div>
     </div>
