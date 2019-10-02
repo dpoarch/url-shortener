@@ -14,11 +14,24 @@ public function get_last_ten_entries()
         return $query->result();
 }
 
+private function get_shortcode(){
+        $shortcodeLength = 9;
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'; 
+        $shortcode = ''; 
+        
+        for ($i = 0; $i < $shortcodeLength; $i++) { 
+                $index = rand(0, strlen($characters) - 1); 
+                $shortcode .= $characters[$index]; 
+        } 
+        
+        return $shortcode; 
+}
+
 public function insert_url()
 {
-        //$this->id    = $_POST['title']; // please read the below note
-        $this->url  = "www.you.com";
-        $this->shorturl = 'aaaaaaaaaa';
+        $url    = $_POST['url'];
+        $this->url  = $url;
+        $this->shorturl = $this->get_shortcode();
         $this->clicks = 0;
         $this->datecreated    = date("Y-m-d H:i:s"); 
 
