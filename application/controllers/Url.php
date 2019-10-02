@@ -5,6 +5,11 @@ class Url extends CI_Controller {
 
 	public function create()
 	{
-		echo "hello";
+        $this->load->model('urlshortener');
+        
+        $this->urlshortener->insert_url();
 	}
 }
+
+
+?>

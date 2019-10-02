@@ -1,12 +1,12 @@
 <?php
 
-class Url_model extends CI_Model {
+class Urlshortener extends CI_Model {
 
-public $title;
+public $id;
 public $url;
 public $shorturl;
-public $shorturl;
-public $shorturl;
+public $clicks;
+public $datecreated;
 
 public function get_last_ten_entries()
 {
@@ -16,11 +16,13 @@ public function get_last_ten_entries()
 
 public function insert_url()
 {
-        $this->title    = $_POST['title']; // please read the below note
-        $this->content  = $_POST['content'];
-        $this->date     = time();
+        //$this->id    = $_POST['title']; // please read the below note
+        $this->url  = "www.you.com";
+        $this->shorturl = 'aaaaaaaaaa';
+        $this->clicks = 0;
+        $this->datecreated    = date("Y-m-d H:i:s"); 
 
-        $this->db->insert('entries', $this);
+        $this->db->insert('urls', $this);
 }
 
 public function update_clicks()
